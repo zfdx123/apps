@@ -147,49 +147,6 @@ EOF
 	echo "PDNSD: Start DNS Caching"
 }
 
-start_dnsforwarder() {
-	mkdir -p "/var/run/dnscache"
-	cat > "/var/run/dnscache/dnscache.conf" <<EOF
-LogOn false
-LogFileThresholdLength 102400
-LogFileFolder /var/run/dnscache
-UDPLocal 127.0.0.1:5333
-UDPGroup ${dns_caching_dns} * on
-GroupFile
-BlockIP 243.185.187.39,46.82.174.68,37.61.54.158,93.46.8.89,59.24.3.173,203.98.7.65,8.7.198.45,78.16.49.15,159.106.121.75,69.63.187.12,31.13.76.8,31.13.64.49
-IPSubstituting
-BlockNegativeResponse false
-Hosts
-HostsUpdateInterval 18000
-HostsDownloadPath
-HostsScript
-HostsRetryInterval 30
-AppendHosts
-BlockIpv6WhenIpv4Exists false
-UseCache true
-CacheSize 1048576
-MemoryCache true
-CacheFile
-IgnoreTTL false
-OverrideTTL -1
-MultipleTTL 1
-ReloadCache false
-OverwriteCache false
-DisabledType
-DisabledDomain
-DisabledList
-DomainStatistic false
-DomainStatisticTempletFile
-StatisticUpdateInterval 29
-EOF
-
-	[ -d "/var/sbin" ] || mkdir -p "/var/sbin"
-	cp -a "/usr/bin/dnsforwarder" "/var/sbin/dnscache"
-	/var/sbin/dnscache -f "/var/run/dnscache/dnscache.conf" > "/var/log/dnscache.file" 2>&1 &
-	echo "DnsForwarder: Start DNS Caching"
-
-}
-
 start_dnsproxy() {
 	[ -d "/var/run/dnscache" ] || mkdir -p "/var/run/dnscache"
 	echo -e "${dns_caching_dns//,/\\n}" > "/var/run/dnscache/dnscache.conf"
@@ -297,7 +254,7 @@ check_status(){
 			echo -n "Flow Offloading"
 			exit 0
 		elif [ "$(cat "/sys/module/xt_FLOWOFFLOAD/refcnt" 2>"/dev/null" || echo 0)" -ne "2" ]; then
-			echo -n "Flow Offloading Fw"
+			echo -n "Flow Offloading 2"
 			exit 0
 		else
 			exit 1

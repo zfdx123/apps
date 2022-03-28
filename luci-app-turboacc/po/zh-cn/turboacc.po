@@ -49,9 +49,6 @@ msgstr "DNS 解析程序"
 msgid "Using PDNSD to query and cache"
 msgstr "使用 PDNSD 解析"
 
-msgid "Using DNSForwarder to query and cache"
-msgstr "使用 DNSForwarder 解析"
-
 msgid "Using DNSProxy to query and cache"
 msgstr "使用 DNSProxy 解析"
 
@@ -78,6 +75,3 @@ msgstr "全锥型 NAT"
 
 msgid "DNS Caching"
 msgstr "DNS 缓存"
-
-msgid "Open Web Interface"
-msgstr "打开 Web 界面"
