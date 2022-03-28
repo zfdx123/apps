@@ -310,7 +310,7 @@ check_status(){
 	"bbr")
 		if [ "x$(cat "/proc/sys/net/ipv4/tcp_congestion_control" 2>"/dev/null")" == "xbbr" ]; then
 			exit 0
-		elif
+		else
 			exit 1
 		fi
 		;;
