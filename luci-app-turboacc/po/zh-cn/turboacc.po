@@ -49,7 +49,6 @@ msgstr "DNS 解析程序"
 msgid "Using PDNSD to query and cache"
 msgstr "使用 PDNSD 解析"
 
-
 msgid "Using DNSForwarder to query and cache"
 msgstr "使用 DNSForwarder 解析"
 
