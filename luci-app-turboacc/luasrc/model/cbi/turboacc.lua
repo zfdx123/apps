@@ -30,12 +30,6 @@ bbr_cca.default = 0
 bbr_cca.description = translate("使用 BBR 拥塞控制算法可以有效提升 TCP 网络性能")
 end 
 
-if nixio.fs.access("/lib/modules/" .. kernel_version .. "/xt_FULLCONENAT.ko") then
-fullcone_nat = s:option(Flag, "fullcone_nat", translate("全锥形 NAT"))
-fullcone_nat.default = 0
-fullcone_nat.description = translate("使用全锥形 NAT 可以有效提升游戏体验")
-end 
-
 dns_caching = s:option(Flag, "dns_caching", translate("DNS 缓存"))
 dns_caching.default = 0
 dns_caching.rmempty = false
